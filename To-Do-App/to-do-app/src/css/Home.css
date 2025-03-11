@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    padding-bottom: 80px; /* Adjust based on your footer height */
+}
+
+.introSection{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%; 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    margin-top: 70px;
+    margin-bottom: 90px;
+}
+
+.welcomeIntro{
+    padding: 10px;
+    max-width: 50%; 
+    margin-inline: auto;
+    text-align: center;
+}
+.welcomeIntro h2{
+    font-family: "Poppins", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 24px;
+}
+.welcomeIntro h6{
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+.imageIntro {
+    text-align: right;
+    padding: 10px;
+}
+
+.imageIntro img {
+    border-radius: 8px;
+    width: 700px;
+    height: 450px;
+}
+
+/* CSS */
+.button-4 {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button-4:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.button-4:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button-4:focus {
+  outline: 1px transparent;
+}
+
+.button-4:before {
+  display: none;
+}
+
+.button-4:-webkit-details-marker {
+  display: none;
+}
+
+/*features section*/
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--light);
+}
+
+.container h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+.container h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.container p {
+    margin-bottom: 15px;
+    color: #444;
+}
+
+/* This is for the feature section divs */
+.container div[style="margin: 40px 0;"] {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+/**/
+
+.pricing-title{
+    text-align: center;
+    margin-bottom: -25px;
+}
+
+.pricing-title h2{
+    font-family: "Poppins", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 24px;
+}
+
+.pricing-title h6{
+    margin-top: 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.pricing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    background: white;
+    justify-content: center;
+}
+
+.pricing-box {
+    padding: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.pricing-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 1024px) {
+    .pricing-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .pricing-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pricing-box h2 {
+    color: #2563eb;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.target-audience {
+    color: #4b5563;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.price {
+    font-size: 1.25rem;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.plan-features {
+    margin-bottom: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.plan-features ul {
+    list-style-type:none;
+    margin-left: 0;
+}
+
+.plan-features li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}

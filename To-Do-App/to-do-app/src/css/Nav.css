@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    position: fixed; /* Fix the navbar to the viewport */
+    top: 0; /* Position at the top */
+    left: 0; /* Align to the left edge */
+    width: 100%; /* Full width */
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    z-index: 1000; /* Ensure navbar stays above other content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds subtle shadow */
+}
+
+.navbar nav {
+    display: flex;
+    justify-content: space-between; /* Push logo left, links right */
+    align-items: center; /* Center items vertically */
+}
+
+.navbar h4{
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Navigation list styling */
+.navbarList ul {
+    list-style: none; /* Remove default bullet points */
+    display: flex; /* Arrange items in a row */
+    gap: 20px; /* Add space between navigation items */
+    font-family: sans-serif;
+    margin-right: 27.5px;
+}
+
+/* Navigation links */
+.navbarList a {
+    text-decoration: none;
+    color: black; /* Link color */
+    font-size: 16px; /* Adjust font size */
+    font-weight: 500; /* Optional: Make text slightly bold */
+}
+
+.navbarList a:hover {
+    color: #007BFF; /* Optional: Add hover effect */
+    text-decoration: none; /* Optional: Underline on hover */
+}
