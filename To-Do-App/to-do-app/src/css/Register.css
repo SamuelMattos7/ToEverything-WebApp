@@ -43,6 +43,7 @@ form h1{
 }
 
 form input[type="text"],
+form input[type="email"],
 form input[type="password"] {
     padding: 8px;
     border: 1px solid black; /* Increased border width for visibility */

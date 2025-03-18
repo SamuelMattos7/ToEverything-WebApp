@@ -7,6 +7,19 @@ class TaskSerializer(serializers.ModelSerializer):
         model = Task
         fields = '__all__'
 
+class TaskListSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Task
+        fields = ['Id', 'task_name', 'task_status', 'task_category', 'label']
+
+
+class TaskDetailSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Task
+        fields = '__all__'
+
 class TaskCategorySerializer(serializers.ModelSerializer):
     
     class Meta:

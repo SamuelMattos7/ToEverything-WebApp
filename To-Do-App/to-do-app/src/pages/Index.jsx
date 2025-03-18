@@ -1,13 +1,43 @@
 import React from 'react';
 import "../css/Home.css";
-import CategoriesImage from "../img/Homepage/Categories.webp";
-import Management from "../img/Homepage/Management.webp";
-import Priority from "../img/Homepage/Priority.webp";
 import Todo from "../img/Homepage/Todo-app.jpg";
 import Nav from '../components/Nav.jsx';
 import Footer from '../components/Footer.jsx';
+import { useState,useEffect } from "react";
+import axios from "axios";
 
 function Index() {
+
+    const [username, setUsernme] = useState("")
+    const [isLoggedIn, setLoggedIn] = useState(false)
+
+    useEffect (() =>{
+        const checkLoggedUser = async () => {
+            try{
+                const token = localStorage.getItem("accessToken");
+                if(token){
+                    const config = {
+                        headers: {
+                            "Authorization":`Bearer ${token}`
+                        }
+                    };
+                    const response = await axios.get("http://127.0.0.1:8000/api/user/", config)
+                    setLoggedIn(true)
+                    setUsernme(response.data.username)
+                }
+                else{
+                    setLoggedIn(false);
+                    setUsernme("");
+                }
+            }
+            catch{
+                setLoggedIn(false);
+                setUsernme("");
+            }
+        };
+        checkLoggedUser()
+    }, [])
+
     return (
         <div>
             <header>
@@ -15,7 +45,11 @@ function Index() {
             </header>
             <div className="introSection">
                 <div className="welcomeIntro">
-                    <h2>Welcome ToEverything</h2>
+                    {isLoggedIn ? (
+                        <h2>Welcome ToEverything, {username}</h2>
+                    ):(
+                        <h2>Welcome ToEverything</h2>
+                    )}
                     <h6>Stay organized, hit your goals, and make the most of your day. Let’s get started on your tasks because every step counts!</h6>
                     <button className="button-4" role="button">Start for free</button>
                 </div>
