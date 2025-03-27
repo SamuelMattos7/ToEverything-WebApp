@@ -1,7 +1,12 @@
-import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Link, useParams} from "react-router-dom";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import TasksPage from "./pages/tasks";
+import TaskDetails from "./components/taskDetails";
+import UpdateTask from "./components/TaskUpdate";
+import CreateTask from "./components/CreateTask";
+
 function App() {
 
   return (
@@ -11,17 +16,26 @@ function App() {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/login">login</Link></li>
           <li><Link to="/register">Sing up</Link></li>
+          <li><Link to="/tasks">tasks</Link></li>
         </ul>
       </nav>
       <Routes>
         <Route path="/" element={<Index/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
+        <Route path="/tasks" element={<TasksPage/>}></Route>
+        <Route path="/tasks/create" element={<CreateTask/>}></Route>
+        <Route path="/tasks/details/:id" element={<TaskDetailWrapper />} />
+        <Route path="/tasks/edit/:id" element={<UpdateTask/>} />
       </Routes>
     </Router>
-
     
   )
 }
+
+const TaskDetailWrapper = () => {
+  const { id } = useParams();
+  return <TaskDetails taskId={id} />;
+};
 
 export default App

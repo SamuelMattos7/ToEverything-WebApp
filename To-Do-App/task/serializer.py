@@ -13,12 +13,28 @@ class TaskListSerializer(serializers.ModelSerializer):
         model = Task
         fields = ['Id', 'task_name', 'task_status', 'task_category', 'label']
 
+class TaskCreationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = '__all__'
 
 class TaskDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
         fields = '__all__'
+
+class TaskEditSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Task
+        fields = ['Id', 'tasks_project', 'task_name', 'task_status', 'task_category', 'description', 'label']
+
+class TaskDeletionSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Task
+        fields = ['Id']
 
 class TaskCategorySerializer(serializers.ModelSerializer):
     
