@@ -3,14 +3,13 @@ from projects.models import Projects
 from django.conf import settings
 
 class Task_Category(models.Model):
-    category_Id = models.AutoField(verbose_name="Category_ID", primary_key=True)
+    id = models.AutoField(verbose_name="Category_ID", primary_key=True)
     project = models.ForeignKey(Projects, on_delete=models.CASCADE, related_name='task_categories_project', null=True, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     category_name = models.CharField(verbose_name="categoy_name", max_length=255)
 
     def __str__(self):
         return self.category_name
-
 
 class Task(models.Model):
 

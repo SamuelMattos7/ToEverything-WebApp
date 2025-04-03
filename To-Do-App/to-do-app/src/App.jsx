@@ -6,6 +6,9 @@ import TasksPage from "./pages/tasks";
 import TaskDetails from "./components/taskDetails";
 import UpdateTask from "./components/TaskUpdate";
 import CreateTask from "./components/CreateTask";
+import CategoryUpdate from "./components/TaksCategory/EditCategory";
+import CreateCategory from "./components/TaksCategory/CreateCategory";
+import CategoriesPage from "./pages/Categories";
 
 function App() {
 
@@ -27,6 +30,9 @@ function App() {
         <Route path="/tasks/create" element={<CreateTask/>}></Route>
         <Route path="/tasks/details/:id" element={<TaskDetailWrapper />} />
         <Route path="/tasks/edit/:id" element={<UpdateTask/>} />
+        <Route path="/categories" element={<CategoriesPage/>}></Route>
+        <Route path="/category/create-category" element={<CreateCategory/>} />
+        <Route path="/category/update/:id" element={<CategoryUpdate/>} />
       </Routes>
     </Router>
     
