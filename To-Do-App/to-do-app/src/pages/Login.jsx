@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "../css/Login.css";
 import Nav from '../components/Nav.jsx'; 
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 function LoginPage() {
 
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email:"",
     password:""
@@ -36,6 +38,9 @@ function LoginPage() {
       localStorage.setItem("accessToken", response.data.token.access);
       localStorage.setItem("refreshToken", response.data.token.refresh);
       setSucessMessage("Login successful")
+      setTimeout(() => {
+        navigate("/tasks");
+      }, 2000);
     }
     catch(error){
       console.log("Error ocurred dunring login", error.response?.data);

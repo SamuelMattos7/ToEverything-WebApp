@@ -29,7 +29,7 @@ const CreateCategory = () => {
             setSuccess(true);
             setTimeout(() => {
                 navigate("/tasks");
-             }, 2000);
+            }, 2000);
         })
         .catch(err => {
              console.log('Error while creating task: ', err);

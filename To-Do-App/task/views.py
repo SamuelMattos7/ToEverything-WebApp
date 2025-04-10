@@ -104,7 +104,7 @@ def categoryUpdateView(request, id):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     except Task_Category.DoesNotExist:
-        return Response({"detail": "Category not found"}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"error": "Category not found"}, status=status.HTTP_404_NOT_FOUND)
     except Exception as e:
         return Response({"detail": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     

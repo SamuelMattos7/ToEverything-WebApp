@@ -1,10 +1,8 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
-
-from task import serializer
 from .models import Projects
-from .serializers import ProjectCreationSerializer, ProjectDeleteSerializer, ProjectDetailSerializer, ProjectListSerializer
+from .serializers import ProjectCreationSerializer, ProjectDeleteSerializer, ProjectDetailSerializer, ProjectListSerializer, ProjectUpdateSerializer
 from rest_framework.response import Response
 # Create your views here.
 
@@ -25,6 +23,22 @@ def projectCreationView(request):
         serializer.save(creator=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
+def projectUpdateView(request, id):
+    try:
+        data = request.data.copy()
+        project = Projects.objects.get(projectId = id)
+        serializer = ProjectUpdateSerializer(project, data=data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    except Projects.DoesNotExist: 
+        return Response({"error":"Project does not exist"}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({"Details":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

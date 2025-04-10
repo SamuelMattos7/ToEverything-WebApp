@@ -44,3 +44,9 @@ class UsersLoginSerializer(serializers.Serializer):
             return user
         else:
             raise serializers.ValidationError("Incorrect credentials")
+
+#development only
+class UsersListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['UserID', 'username']

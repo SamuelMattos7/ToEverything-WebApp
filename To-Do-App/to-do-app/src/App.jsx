@@ -6,12 +6,13 @@ import TasksPage from "./pages/tasks";
 import TaskDetails from "./components/taskDetails";
 import UpdateTask from "./components/TaskUpdate";
 import CreateTask from "./components/CreateTask";
-import CategoryUpdate from "./components/TaksCategory/EditCategory";
+import CategoryUpdate from "./components/TaksCategory/UpdateCategory";
 import CreateCategory from "./components/TaksCategory/CreateCategory";
 import CategoriesPage from "./pages/Categories";
+import ProjectsPage from "./pages/Projects";
+import ProjectUpdate from "./components/Projects/ProjectUpdate";
 
 function App() {
-
   return (
     <Router>
       <nav>
@@ -33,6 +34,8 @@ function App() {
         <Route path="/categories" element={<CategoriesPage/>}></Route>
         <Route path="/category/create-category" element={<CreateCategory/>} />
         <Route path="/category/update/:id" element={<CategoryUpdate/>} />
+        <Route path="/projects" element={<ProjectsPage/>}/>
+        <Route path="/projects/update/:id" element={<ProjectUpdate/>}/>
       </Routes>
     </Router>
     

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.generics import GenericAPIView, RetrieveAPIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import *
@@ -54,3 +55,13 @@ class UserInfoAPIview(RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+#development only
+@api_view(['GET']) 
+def userListView(request):
+    try:
+        users = User.objects.all()
+        serializer = UsersListSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except Exception:
+        return Response(serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
