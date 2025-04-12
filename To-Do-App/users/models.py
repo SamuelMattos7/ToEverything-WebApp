@@ -57,3 +57,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+
+class Contacts(models.Model):
+    email = models.EmailField(verbose_name='Email', max_length=60, unique=True)
+    phone_number = models.CharField(verbose_name="Phone Number", max_length=10, unique=True)
+    username = models.ManyToManyField(settings.AUTH_USER_MODEL)
+
+    def __str__(self):
+        return self.email
+
+

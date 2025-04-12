@@ -3,14 +3,14 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import TasksPage from "./pages/tasks";
-import TaskDetails from "./components/taskDetails";
-import UpdateTask from "./components/TaskUpdate";
-import CreateTask from "./components/CreateTask";
-import CategoryUpdate from "./components/TaksCategory/UpdateCategory";
-import CreateCategory from "./components/TaksCategory/CreateCategory";
+import TaskDetails from "./components/tasks/taskDetails";
+import UpdateTask from "./components/tasks/TaskUpdate";
+import CreateTask from "./components/tasks/CreateTask";
+import CategoryUpdate from "./components/categories/UpdateCategory";
+import CreateCategory from "./components/categories/CreateCategory";
 import CategoriesPage from "./pages/Categories";
 import ProjectsPage from "./pages/Projects";
-import ProjectUpdate from "./components/Projects/ProjectUpdate";
+import ProjectUpdate from "./components/projects/ProjectUpdate";
 
 function App() {
   return (

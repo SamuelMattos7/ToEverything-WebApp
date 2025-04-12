@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "../components/Nav.jsx";
-import CategoryList from "../components/TaksCategory/CategoryList.jsx";
+import CategoryList from "../components/categories/CategoryList.jsx";
 
 function CategoriesPage() {
     

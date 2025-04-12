@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "../components/Nav.jsx";
-import ProjectsList from "../components/Projects/ProjectList.jsx";
+import ProjectsList from "../components/projects/ProjectList.jsx";
 
 export default function ProjectsPage () {
     return(
