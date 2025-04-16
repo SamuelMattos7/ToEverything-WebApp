@@ -40,6 +40,7 @@ const ProjectsList = () => {
     return (
         <div>
             <ul className="projects-list">
+            <button><a href={'projects/create'}>Create project</a></button>
                 {projects.map(project => {
                     return (
                     <li key={project.projectId}>
@@ -47,10 +48,9 @@ const ProjectsList = () => {
                         <span className="project-name">{project.project_name}</span>
                         </div>
                         <div className="project-actions">
-                        <button>
-                            <a href={`projects/update/${project.projectId}`}>Edit</a>
-                        </button>
-                        <button onClick={() => deleteProject(project.projectId)}>Delete</button>
+                            <button><a href={`project/details/${project.projectId}`}>See details</a></button>
+                            <button><a href={`projects/update/${project.projectId}`}>Edit</a></button>
+                            <button onClick={() => deleteProject(project.projectId)}>Delete</button>
                         </div>
                     </li>
                     );

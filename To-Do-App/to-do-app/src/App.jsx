@@ -11,6 +11,8 @@ import CreateCategory from "./components/categories/CreateCategory";
 import CategoriesPage from "./pages/Categories";
 import ProjectsPage from "./pages/Projects";
 import ProjectUpdate from "./components/projects/ProjectUpdate";
+import CreateProject from "./components/projects/CreateProject";
+import ProjectDetails from "./components/projects/projectDetails";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path="/category/create-category" element={<CreateCategory/>} />
         <Route path="/category/update/:id" element={<CategoryUpdate/>} />
         <Route path="/projects" element={<ProjectsPage/>}/>
+        <Route path="/project/details/:id" element={<ProjectDetails/>}/>
+        <Route path="/projects/create" element={<CreateProject/>}/>
         <Route path="/projects/update/:id" element={<ProjectUpdate/>}/>
       </Routes>
     </Router>

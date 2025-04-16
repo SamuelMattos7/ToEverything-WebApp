@@ -9,5 +9,4 @@ urlpatterns = [
     path("logout/", LogoutUserAPIview.as_view(), name="logout-user"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token-refresh"),
     path("user/", UserInfoAPIview.as_view(), name="user-details"),
-    path("users-list/", views.userListView, name="users-list") # development only
 ]

@@ -7,13 +7,12 @@ const ProjectUpdate = () => {
     const {id} = useParams();
     const navigate = useNavigate();
 
-    const [contacts, setContacts] = useState([]);
-    const[project, setProject] = useState({
+    const [formData, setFormData] = useState({
         project_name:"",
         project_description:"",
         project_startDate:"", 
         project_endDate:"", 
-        users:""
+        collaborator_emails:""
     });
 
     const [success, setSuccess] = useState(false)
@@ -21,44 +20,48 @@ const ProjectUpdate = () => {
     const [error, setError] = useState(null);
     
     useEffect(() => {
-        const fetchContacts = async() => {
-            try{
-                const response = await axios.get('http://127.0.0.1:8000/api/users-list/', {
-                    headers:{Authorization:`Bearer ${localStorage.getItem('accessToken')}`}
-                });   
-                setContacts(response.data); 
-            }catch(error){
-                console.error('Error fetching contacts: ', error);
-            }
-        }
-        fetchContacts();
-    }, []);
-
-    useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/projects/details/${id}/`, 
-            {headers:{Authorization:`Bearer ${localStorage.getItem('accessToken')}`}
+        axios.get(`http://127.0.0.1:8000/projects/details/${id}/`, {
+            headers:{Authorization:`Bearer ${localStorage.getItem('accessToken')}`}
         })
         .then(response => {
-            setProject(response.data);
+            const projectData = response.data;
+            
+            if (projectData.users && Array.isArray(projectData.users)){
+                const emails = projectData.users.map(user => user.email).join(', ');
+                projectData.collaborator_emails = emails;
+            }
+
+            setFormData(projectData);
             setLoading(false);
         })
         .catch(err => {
+            console.error(err || "Unknown error while fetching details")
             setError(err);
             setLoading(false);
-        })
+        });
     }, [id]);
 
     const handleChange = (e) => {
-        setProject({...project, [e.target.name]: e.target.value})
+        setFormData({...formData, [e.target.name]: e.target.value})
     }
 
     const handleSubmit = (e) => {
+        
         e.preventDefault();
-        axios.put(`http://127.0.0.1:8000/projects/update/${id}/`, project, {
+
+        const emailData = {
+            ...formData,
+            collaborator_emails: formData.collaborator_emails
+                .split(',')
+                .map(email => email.trim())
+                .filter(email => email !== "")
+        }
+
+        axios.put(`http://127.0.0.1:8000/projects/update/${id}/`, emailData,{
             headers:{Authorization:`Bearer ${localStorage.getItem("accessToken")}`}
         })
         .then(response => {
-            setProject(response.data);
+            setFormData(response.data);
             setSuccess(true);
             setTimeout(() => {
                 navigate("/projects")
@@ -90,7 +93,7 @@ const ProjectUpdate = () => {
                         type="text"
                         id="project_name" 
                         name="project_name" 
-                        value={project.project_name}
+                        value={formData.project_name}
                         onChange={handleChange}
                     />
                 </div>
@@ -100,7 +103,7 @@ const ProjectUpdate = () => {
                         type="text"
                         id="project_description"
                         name="project_description" 
-                        value={project.project_description}
+                        value={formData.project_description}
                         onChange={handleChange}
                     />
                 </div>
@@ -110,7 +113,7 @@ const ProjectUpdate = () => {
                         type="date"
                         id="project_startDate"
                         name="project_startDate" 
-                        value={project.project_startDate}
+                        value={formData.project_startDate}
                         onChange={handleChange}
                     />
                 </div>
@@ -120,27 +123,23 @@ const ProjectUpdate = () => {
                         type="date" 
                         id="project_endDate"
                         name="project_endDate"
-                        value={project.project_endDate}
+                        value={formData.project_endDate}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <div>
-                    <label>Collaborators</label>
-                    <select 
-                        name="users" 
-                        id="users" 
-                        value={project.users} 
+                    <input
+                        type="text" 
+                        id="collaborator_emails"
+                        name="collaborator_emails" 
+                        value={formData.collaborator_emails}
                         onChange={handleChange}
-                    >
-                        <option value="">Select a user</option>
-                        {contacts.map((user) =>(
-                            <option key={user.UserID} value={user.UserID}>
-                                {user.username}
-                            </option>
-                        ))}
-                    </select>
+                        placeholder="Enter email addresses separated by commas"
+                    />
+                    <small className="">Enter collaborator email addresses separated by commas</small>
                 </div>
+                <button type="submit">Update</button>
             </form>
         </div>
     );

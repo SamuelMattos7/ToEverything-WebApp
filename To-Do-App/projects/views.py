@@ -17,29 +17,46 @@ def projectsListView(request):
 @permission_classes([IsAuthenticated])
 def projectCreationView(request):
     data = request.data.copy()
-    data['user'] = request.user.UserID
+    data['creator'] = request.user.UserID
+
+    if isinstance(data.get('collaborator_emails'), str):
+        data['collaborator_emails'] = data['collaborator_emails'].split(',')
+        
     serializer = ProjectCreationSerializer(data=data)
+
     if serializer.is_valid():
         serializer.save(creator=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['PATCH'])
+@api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def projectUpdateView(request, id):
     try:
-        data = request.data.copy()
         project = Projects.objects.get(projectId = id)
+
+        if project.creator != request.user:
+            return Response({'detail':'you do not have the permission to update this project'}, 
+                status=status.HTTP_403_FORBIDDEN)
+
+        data = request.data.copy()
+
+        if isinstance(data.get('collaborator_emails'), str):
+            data['collaborator_emails'] = data['collaborator_emails'].split(',')
+
         serializer = ProjectUpdateSerializer(project, data=data, partial=True)
+
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            detail_serializer = ProjectDetailSerializer(project)
+            return Response(detail_serializer.data)
+        print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
     except Projects.DoesNotExist: 
         return Response({"error":"Project does not exist"}, status=status.HTTP_404_NOT_FOUND)
-    except Exception as e:
-        return Response({"Details":str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
+    
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def projectDetailsView(request, id):

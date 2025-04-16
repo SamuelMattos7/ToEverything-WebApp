@@ -36,7 +36,7 @@ const TaskDetails = () => {
           <p>Category: {task.task_category}</p>
           <p>Label: {task.label}</p>
         </div>
-      );
+    );
 };
 
 export default TaskDetails;
