@@ -14,13 +14,17 @@ class TaskListSerializer(serializers.ModelSerializer):
         model = Task
         fields = ['Id', 'task_name', 'task_status', 'task_category', 'label']
 
+class TaskCalendarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = ['task_name', 'end_date']
+
 class TaskCreationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
         fields = '__all__'
 
 class TaskDetailSerializer(serializers.ModelSerializer):
-    task_category = serializers.StringRelatedField()
     
     class Meta:
         model = Task
@@ -47,6 +51,16 @@ class TaskCategoryListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task_Category
         fields = ['id', 'category_name']
+
+class CategoryListViewSerializer(serializers.ModelSerializer):
+    task_count = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Task_Category
+        fields = ['id', 'category_name', 'task_count']
+    
+    def get_task_count(self, obj):
+        return obj.task_set.count()
 
 class TaskCategorySerializer(serializers.ModelSerializer):
     

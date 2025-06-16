@@ -2,7 +2,7 @@ import {BrowserRouter as Router, Routes, Route, Link, useParams} from "react-rou
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import TasksPage from "./pages/tasks";
+import TasksPage from "./pages/Tasks";
 import TaskDetails from "./components/tasks/taskDetails";
 import UpdateTask from "./components/tasks/TaskUpdate";
 import CreateTask from "./components/tasks/CreateTask";
@@ -13,22 +13,16 @@ import ProjectsPage from "./pages/Projects";
 import ProjectUpdate from "./components/projects/ProjectUpdate";
 import CreateProject from "./components/projects/CreateProject";
 import ProjectDetails from "./components/projects/projectDetails";
+import Calendar from "./pages/Calendar";
 
 function App() {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/login">login</Link></li>
-          <li><Link to="/register">Sing up</Link></li>
-          <li><Link to="/tasks">tasks</Link></li>
-        </ul>
-      </nav>
       <Routes>
         <Route path="/" element={<Index/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/register" element={<Register/>}></Route>
+        <Route path="calendar" element={<Calendar/>}></Route>
         <Route path="/tasks" element={<TasksPage/>}></Route>
         <Route path="/tasks/create" element={<CreateTask/>}></Route>
         <Route path="/tasks/details/:id" element={<TaskDetailWrapper />} />

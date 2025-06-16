@@ -5,7 +5,7 @@ import TaskList from "../components/taskList.jsx";
 function TasksPage() {
     
     return (
-        <div>
+        <div className="overflow-hidden">
             <header>
                 <Nav/>
             </header>

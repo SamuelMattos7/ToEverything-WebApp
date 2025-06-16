@@ -1,4 +1,6 @@
+import re
 from django.shortcuts import render
+from matplotlib.image import resample
 from rest_framework import status
 from .serializer import *
 from .models import Task, Task_Category
@@ -6,6 +8,15 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 # Create your views here.
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def taskCalendarView(request):
+    if request.method == 'GET':
+        taskList = Task.objects.only('task_name', 'end_date')
+        serializer = TaskCalendarSerializer(taskList, many=True)
+        return Response(serializer.data)
+
 
 @api_view(['GET'])
 def taskListView(request):
@@ -76,6 +87,13 @@ def TaskCategoryCreateView(request):
 def CategoryListView(request):
     categories = Task_Category.objects.filter(user=request.user)
     serializer = TaskCategoryListSerializer(categories, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def CategoriesView(request):
+    categories = Task_Category.objects.filter(user=request.user)
+    serializer = CategoryListViewSerializer(categories, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])

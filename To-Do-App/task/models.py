@@ -24,13 +24,13 @@ class Task(models.Model):
     )
 
     COMPLETE = "COMPLETED"
-    IN_PROGRESS = "IN_PROGRESS"
-    NOT_STARTED = "NOT_STARTED"
+    IN_PROGRESS = "IN PROGRESS"
+    NOT_STARTED = "NOT STARTED"
 
     status_options = (
-        (COMPLETE,'Completed'),
-        (IN_PROGRESS,'In progress'),
-        (NOT_STARTED,'Not started'),
+        ('Completed', COMPLETE),
+        ('In progress', IN_PROGRESS),
+        ('Not started', NOT_STARTED),
     )
 
     Id = models.BigAutoField(primary_key=True, verbose_name="Task_ID")

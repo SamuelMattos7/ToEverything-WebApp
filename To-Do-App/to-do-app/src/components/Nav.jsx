@@ -60,24 +60,35 @@ function Nav() {
     }
 
     return (
-        <div className="navbar">
-            <nav>
-                <h4 className="Company_name">ToEverything</h4>
-                <div className="navbarList">
-                    <ul>
-                        <li className="navElements"><a href="/">Home</a></li>
-                        {isLoggedIn ? (
-                            <li className="navElements"><a onClick={handleLogout}>Logout</a></li>
-                        ):(
-                            <li className="navElements"><a href="/login">Login</a></li>
-                        )
-                        }
-                        <li className="navElements"><a href="/register">Register</a></li>
-                        <li className="navElements"><a href="/prices">Get in contact</a></li>
-                    </ul>
+        <nav className=" bg-blue-400 shadow-lg">
+            <div className="mx-auto px-4">
+                <div className="flex justify-between">
+                    <div className="flex">
+                        <div>
+                            <a href="#" className="flex items-center py-4 px-2">
+                                <span className="font-semibold text-white text-lg">ToEverything</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="flex ">
+                            <a href="/" className="py-4 px-2 text-white">Home</a>
+                            {isLoggedIn ? (
+                                <div className="flex">
+                                    <a className="py-4 px-2 text-white" onClick={handleLogout}>Logout</a> 
+                                    <a className="py-4 px-2 text-white" href="/calendar">Calendar</a>
+                                </div>
+                            ):(
+                                <a className="py-4 px-2 text-white" href="/login">Login</a>
+                            )}
+                            <a className="py-4 px-2 text-white" href="#">About</a>
+                            <a className="py-4 px-2 text-white" href="#" >Contact us</a>
+                        </div>
+                        
+                    </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
     );
 }
 
