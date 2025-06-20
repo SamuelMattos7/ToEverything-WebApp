@@ -77,12 +77,14 @@ function Nav() {
                                 <div className="flex">
                                     <a className="py-4 px-2 text-white" onClick={handleLogout}>Logout</a> 
                                     <a className="py-4 px-2 text-white" href="/calendar">Calendar</a>
+                                    <a className="py-4 px-2 text-white" href="/categories">Categories</a>
+                                    <a className="py-4 px-2 text-white" href="/tasks">Tasks</a>
+                                    <a className="py-4 px-2 text-white" href="/projects">Projects</a>
                                 </div>
                             ):(
                                 <a className="py-4 px-2 text-white" href="/login">Login</a>
                             )}
                             <a className="py-4 px-2 text-white" href="#">About</a>
-                            <a className="py-4 px-2 text-white" href="#" >Contact us</a>
                         </div>
                         
                     </div>

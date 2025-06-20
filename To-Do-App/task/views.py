@@ -106,6 +106,17 @@ def categoryDetailsView(request, id):
             return Response(serializer.data)
         except Task.DoesNotExist:
             return Response({"detail":"Task was not found"}, status=status.HTTP_404_NOT_FOUND)
+        
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def categoryInformationView(request, id):
+    if request.method == 'GET':
+        try:
+            category = Task_Category.objects.get(id=id)
+            serializer = CategoryInformationSerializer(category)
+            return Response(serializer.data)
+        except Task_Category.DoesNotExist:
+            return Response({"detail":"category was not found"}, status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])

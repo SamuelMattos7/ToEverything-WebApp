@@ -27,6 +27,7 @@ const CategoryUpdate = () => {
                     }
                 });
                 setProjects(response.data);
+                console.log(response.data);
             }
             catch(error){
                 console.error("Error fetching projects: ", error);
@@ -39,12 +40,13 @@ const CategoryUpdate = () => {
         const fetchCategory = async () => {
             try {
                 const token = localStorage.getItem('accessToken');
-                const response = await axios.get(`http://127.0.0.1:8000/task/categories/`, {
+                const response = await axios.get(`http://127.0.0.1:8000/task/category-details/${id}`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 });
                 setCategory(response.data);
+                console.log(response.data);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching category: ", error);
@@ -77,71 +79,46 @@ const CategoryUpdate = () => {
         })
     }
 
-    if (loading) return <div className="text-center p-5">Loading...</div>;
-    if (error) return <div className="text-center p-5 text-red-500">Error: {error.message}</div>;
+    if (loading) return <div className="min-h-screen bg-gradient-to-b from-slate-200 to-slate-300 flex items-center justify-center"><div className="text-center p-5">Loading...</div></div>;
+    if (error) return <div className="min-h-screen bg-gradient-to-b from-slate-200 to-slate-300 flex items-center justify-center"><div className="text-center p-5 text-red-500">Error: {error.message}</div></div>;
 
     return (
-        <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">Update Category</h2>
-            
-            {success && (
-                <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                    Category updated successfully! Redirecting...
+        <div className="min-h-screen bg-gradient-to-b from-slate-200 to-slate-300 flex items-center justify-center p-4">
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-6 p-6 w-full max-w-md bg-white rounded-xl shadow-lg">
+                <div>
+                    <h2 className="font-bold text-xl font-sans">Update {category.category_name}</h2>
                 </div>
-            )}
-            
-            <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <label htmlFor="project" className="block text-gray-700 text-sm font-bold mb-2">
-                        Project
-                    </label>
-                    <select
-                        id="project"
-                        name="project"
-                        value={category.project}
-                        onChange={handleChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    >
-                        <option value="">Select a project</option>
-                        {projects.map((project) => (
-                            <option key={project.id} value={project.id}>
-                                {project.project_name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                
-                <div className="mb-6">
-                    <label htmlFor="category_name" className="block text-gray-700 text-sm font-bold mb-2">
-                        Category Name
-                    </label>
+                <div> 
+                    <label htmlFor="category_name" className="block text-gray-700 text-sm font-bold mb-2">Name</label>
                     <input
                         type="text"
                         id="category_name"
                         name="category_name"
                         value={category.category_name}
                         onChange={handleChange}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder="Category Name"
-                        required
+                        className="block !w-full p-2.5 bg-gray-50 border border-gray-300 rounded-lg outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 appearance-none"
+                        placeholder={category.category_name}
+                        required 
                     />
                 </div>
-                
-                <div className="flex items-center justify-between">
-                    <button
-                        type="submit"
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                <div>
+                    <label htmlFor="project" className="block mb-2 text-sm font-medium">Project</label>
+                    <select
+                        id="project"
+                        name="project"
+                        value={category.project || ''}
+                        onChange={handleChange}
+                        className="block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
                     >
-                        Update Category
-                    </button>
-                    <button
-                        type="button"
-                        onClick={() => navigate('/tasks')}
-                        className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    >
-                        Cancel
-                    </button>
+                        <option value="">Select a Project</option>
+                        {projects.map(p => (
+                            <option key={p.projectId} value={p.projectId}>
+                            {p.project_name}
+                            </option>
+                        ))}
+                    </select>
                 </div>
+                <button type="submit" className="block w-full py-2.5 text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300">Submit</button>
             </form>
         </div>
     );

@@ -74,9 +74,9 @@ const CreateTask = () => {
     if (error) return <div>Error: {error.message}</div>
 
     return (
-        <div className="bg-gradient-to-b from-slate-200 to-slate-300 bg-opacity-80 p-4">            
+        <div className=" min-h-screen bg-gradient-to-b from-slate-200 to-slate-300 bg-opacity-80 p-4">            
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-auto p-4 w-full max-w-screen-sm md:max-w-lg lg:max-w-xl bg-white rounded-xl">
-                
+                <div><h2 className=" font-bold text-xl font-sans">Create task</h2></div>
                 <div className="col-span-full">
                 
                     <div className="mb-4">

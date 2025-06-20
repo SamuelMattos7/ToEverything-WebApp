@@ -52,6 +52,11 @@ class TaskCategoryListSerializer(serializers.ModelSerializer):
         model = Task_Category
         fields = ['id', 'category_name']
 
+class CategoryInformationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task_Category
+        fields = ['id', 'project', 'category_name']
+
 class CategoryListViewSerializer(serializers.ModelSerializer):
     task_count = serializers.SerializerMethodField()
 
