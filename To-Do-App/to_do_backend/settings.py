@@ -85,8 +85,12 @@ WSGI_APPLICATION = 'to_do_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ToEverything',
+        'USER': 'postgres',
+        'PASSWORD': 'vale4512',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 

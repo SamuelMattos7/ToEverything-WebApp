@@ -37,6 +37,8 @@ const ProjectDetails = () => {
         return date.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
     }
 
+    const usersLength = details.users;
+
     return (
         <div>
             <div className="min-h-screen bg-gradient-to-b from-slate-200 to-slate-300 bg-opacity-80 flex items-center justify-center p-4">
@@ -71,13 +73,19 @@ const ProjectDetails = () => {
                         <div className="flex flex-wrap gap-2">
                             <div className="mt-2">
                                 <h4 className="text-sm font-medium text-gray-700 mb-2">Collaborators</h4>
-                                <div className="flex flex-wrap gap-1">
-                                    {details.users.map(collaborator => (
-                                    <span key={collaborator.id} className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800">
-                                        {collaborator.email}
-                                    </span>
-                                    ))}
-                                </div>
+                                {usersLength.length > 0 ? (
+                                    <div className="flex flex-wrap gap-1">
+                                        {details.users.map(collaborator => (
+                                        <span key={collaborator.id} className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-100 text-blue-800">
+                                            {collaborator.email}
+                                        </span>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="flex flex-wrap gap-1">
+                                        <p>There aren't any collaborators</p>
+                                    </div>
+                                )}
                             </div>
                         </div>
 

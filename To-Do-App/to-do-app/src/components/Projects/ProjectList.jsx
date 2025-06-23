@@ -24,7 +24,6 @@ const ProjectsList = () => {
                 }
                 
                 const data = await response.json();
-                console.log(data);
                 setProjects(data);
                 setLoading(false);
             } catch (err) {
@@ -54,7 +53,7 @@ const ProjectsList = () => {
             }
             
             const data = await response.json();
-            console.log(`Project details for ${projectId}:`, data);
+            //console.log(`Project details for ${projectId}:`, data);
             
             setProjectDetails(prev => ({
                 ...prev,
@@ -190,7 +189,6 @@ const ProjectsList = () => {
                                                 </div>
                                             </div>
                                             
-                                            {/* Actions */}
                                             <div className="flex gap-3 pt-2">
                                                 <a 
                                                     href={`/projects/update/${project.projectId}`}

@@ -124,7 +124,7 @@ const CategoryList = () => {
                             <p className="text-gray-600 mb-6">Create your first category to get started organizing your tasks.</p>
                             <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg inline-flex items-center gap-2 transition-colors">
                                 <Plus size={16} />
-                                Create Category
+                                <a href="/category/create-category">Create Category</a>
                             </button>
                         </div>
                     ) : (

@@ -101,9 +101,9 @@ const CreateTask = () => {
                                 required
                                 className="block w-full border border-gray-300 rounded-lg px-3 py-2"
                             >
-                                <option value="NOT_STARTED">Not Started</option>
-                                <option value="IN_PROGRESS">In Progress</option>
-                                <option value="COMPLETED">Completed</option>
+                                <option value="Not started">Not Started</option>
+                                <option value="In progress">In Progress</option>
+                                <option value="Completed">Completed</option>
                             </select>
                         </div>
                         <div className="w-1/2">

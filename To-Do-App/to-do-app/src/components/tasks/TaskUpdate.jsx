@@ -172,7 +172,15 @@ const UpdateTask = () => {
                             ))}
                         </select>
                     ): (
-                        <p>Loading categories... </p>
+                        <select
+                            id="task_category"
+                            name="task_category"
+                            value={task.task_category || ''}
+                            onChange={handleChange}
+                            className="block w-full bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
+                        >
+                        <option value="">Select a Category</option>
+                        </select>
                     )}
                 </div>
 
