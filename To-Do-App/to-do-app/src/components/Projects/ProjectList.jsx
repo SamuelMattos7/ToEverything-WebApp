@@ -76,7 +76,7 @@ const ProjectsList = () => {
     };
 
     const deleteProject = async (id) => {
-        if(window.confirm('Are you sure you want to delete this project')) {
+        if(window.confirm('Are you sure you want to delete this project, if you do all related categories and task to it will also be deleted')) {
             try {
                 const response = await fetch(`http://127.0.0.1:8000/projects/delete/${id}/`, {
                     method: 'DELETE',

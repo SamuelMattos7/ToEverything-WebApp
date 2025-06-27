@@ -10,7 +10,9 @@ export default function TodoList() {
 
   useEffect(() => {
     axios
-      .get('http://127.0.0.1:8000/task/list/')
+      .get('http://127.0.0.1:8000/task/list/', {headers: 
+        {Authorization: `Bearer ${localStorage.getItem('accessToken')}`}
+      })
       .then(response => {
         setTasks(response.data);
         setLoading(false);

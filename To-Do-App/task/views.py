@@ -1,6 +1,5 @@
 import re
 from django.shortcuts import render
-from matplotlib.image import resample
 from rest_framework import status
 from .serializer import *
 from .models import Task, Task_Category
@@ -19,9 +18,10 @@ def taskCalendarView(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def taskListView(request):
     if request.method == 'GET':
-        list_of_tasks = Task.objects.only('Id', 'task_name', 'task_status', 'task_category', 'label')
+        list_of_tasks = Task.objects.filter(user=request.user).only('Id', 'task_name', 'task_status', 'task_category', 'label')
         serializer = TaskListSerializer(list_of_tasks, many=True)
         return Response(serializer.data)
 
@@ -106,7 +106,7 @@ def categoryDetailsView(request, id):
             return Response(serializer.data)
         except Task.DoesNotExist:
             return Response({"detail":"Task was not found"}, status=status.HTTP_404_NOT_FOUND)
-        
+         
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def categoryInformationView(request, id):

@@ -24,16 +24,17 @@ class AccountManagement(BaseUserManager):
         return self.create_user(email, username, password, **other_fields)
     
     def create_user(self, email, username, password, **other_fields):
+        if not email:
+            raise ValueError('Email is missing')
 
-        if not email: 
-            raise ValueError('Debe entregar su correo electronico')
-        
-        email = self.normalize_email(email) # Normaliza el correo el electronico, chequea si se ha formateado correctamente
-        user = self.model(email=email, username=username, **other_fields) # se crea el objeto user, listo para ser guardado a la DB
-        user.set_password(password) # determinamos la contraseña del ususario
-        user.save() # se guarda la informacion
-        # retornamos el usuario
+        email = self.normalize_email(email)
+        other_fields.setdefault('is_active', True) 
+
+        user = self.model(email=email, username=username, **other_fields)
+        user.set_password(password)
+        user.save()
         return user
+
             
 
 class User(AbstractBaseUser, PermissionsMixin):

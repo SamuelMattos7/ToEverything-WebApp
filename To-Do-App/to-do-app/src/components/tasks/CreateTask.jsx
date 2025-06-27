@@ -12,7 +12,7 @@ const CreateTask = () => {
     const [task, setTask] = useState({
         tasks_project:"",
         task_name:"",
-        task_status:"NOT_STARTED",
+        task_status:"Not started",
         task_category:"",
         description:"",
         label:"HIGH",
