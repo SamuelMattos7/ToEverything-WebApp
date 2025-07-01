@@ -167,17 +167,6 @@ services:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Support
-
-If you encounter any issues or have questions:
-1. Check the existing issues in the repository
-2. Create a new issue with detailed information about the problem
-3. Include steps to reproduce and relevant system information
-
 ## Roadmap
 
 - [ ] Team collaboration features
