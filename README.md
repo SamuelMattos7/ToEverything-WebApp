@@ -21,7 +21,7 @@ A comprehensive todo application that helps you organize your tasks with project
 
 ### Frontend
 - **Framework**: React
-- **Styling**: Modern CSS/styled components
+- **Styling**: CSS Tailwind
 
 ### Backend
 - **Framework**: Django (Python)
@@ -102,29 +102,32 @@ For local development without Docker:
 ## API Endpoints
 
 ### Authentication
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/login` - User login
-- `POST /api/auth/logout` - User logout
-- `GET /api/auth/me` - Get current user info
-
-### Projects
-- `GET /api/projects` - Get all user projects
-- `POST /api/projects` - Create new project
-- `PUT /api/projects/:id` - Update project
-- `DELETE /api/projects/:id` - Delete project
-
-### Categories
-- `GET /api/categories` - Get all user categories
-- `POST /api/categories` - Create new category
-- `PUT /api/categories/:id` - Update category
-- `DELETE /api/categories/:id` - Delete category
+- `POST /api/user/register/` - User registration
+- `POST /api/user/login/` - User login
+- `POST /api/user/logout/` - User logout
 
 ### Tasks
-- `GET /api/tasks` - Get all user tasks
-- `POST /api/tasks` - Create new task
-- `PUT /api/tasks/:id` - Update task
-- `DELETE /api/tasks/:id` - Delete task
-- `GET /api/tasks/calendar` - Get tasks for calendar view
+- `GET /api/tasks/list/` - Get all user tasks
+- `POST /api/tasks/create/` - Create new task
+- `GET /api/tasks/details/<int:id>/` - Get task details
+- `PUT /api/tasks/update/<int:id>/` - Update task
+- `DELETE /api/tasks/delete/<int:id>/` - Delete task
+- `GET /api/tasks/calendar/` - Get tasks for calendar view
+
+### Categories
+- `GET /api/tasks/categories/` - Get all user categories
+- `POST /api/tasks/category/create/` - Create new category
+- `GET /api/tasks/category-details/<int:id>/` - Get category details
+- `PUT /api/tasks/category/update/<int:id>/` - Update category
+- `DELETE /api/tasks/category/delete/<int:id>/` - Delete category
+- `GET /api/tasks/categories-list/` - Get categories list view
+
+### Projects
+- `GET /api/projects/list/` - Get all user projects
+- `POST /api/projects/create/` - Create new project
+- `GET /api/projects/details/<int:id>/` - Get project details
+- `PUT /api/projects/update/<int:id>/` - Update project
+- `DELETE /api/projects/delete/<int:id>/` - Delete project
 
 ## Docker Configuration
 
@@ -136,7 +139,7 @@ The application uses multi-container Docker setup:
 - **Volume Mounting**: Persistent data storage
 
 ### Docker Compose Structure
-```yaml
+```yml
 version: '3.8'
 services:
   app:
@@ -155,6 +158,18 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 ```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
