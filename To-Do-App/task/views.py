@@ -12,7 +12,7 @@ from rest_framework.response import Response
 @permission_classes([IsAuthenticated])
 def taskCalendarView(request):
     if request.method == 'GET':
-        taskList = Task.objects.only('task_name', 'end_date')
+        taskList = Task.objects.filter(user=request.user).only('task_name', 'end_date')
         serializer = TaskCalendarSerializer(taskList, many=True)
         return Response(serializer.data)
 

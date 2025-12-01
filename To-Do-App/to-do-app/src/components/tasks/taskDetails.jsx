@@ -92,7 +92,7 @@ const TaskDetails = () => {
                                 <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-800 font-medium mr-2">
                                     
                                 </div>
-                                <p className="text-sm">{task.user}</p>
+                                <p className="text-sm">{task.username}</p>
                             </div>
                         </div>
                         

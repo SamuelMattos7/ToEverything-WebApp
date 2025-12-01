@@ -103,7 +103,6 @@ export default function TodoList() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-6">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="mb-8">
           <div className="flex justify-between items-start">
             <div>
@@ -120,7 +119,6 @@ export default function TodoList() {
           </div>
         </div>
 
-        {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
             <div className="flex items-center justify-between">
@@ -168,7 +166,6 @@ export default function TodoList() {
           </div>
         </div>
 
-        {/* Filters */}
         <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 mb-6">
           <div className="flex gap-2">
             {['all', 'pending', 'completed'].map((filterOption) => (
@@ -186,7 +183,6 @@ export default function TodoList() {
           </div>
         </div>
 
-        {/* Task List */}
         <div className="space-y-4">
           {filteredTasks.map((task) => (
             <div
@@ -202,7 +198,6 @@ export default function TodoList() {
                   )}
                 </button>
 
-                {/* Content */}
                 <div className="flex-1">
                   <div className="flex items-start justify-between mb-3">
                     <div>
@@ -230,7 +225,6 @@ export default function TodoList() {
                     </div>
                   </div>
 
-                  {/* Tags and Info */}
                   <div className="flex items-center gap-4 text-sm">
                     <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getPriorityColor(task.label)}`}>
                       {formatPriority(task.label)} priority

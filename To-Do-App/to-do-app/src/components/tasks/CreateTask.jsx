@@ -16,6 +16,7 @@ const CreateTask = () => {
         task_category:"",
         description:"",
         label:"HIGH",
+        start_date:"",
         end_date:"",
     });
 
@@ -176,7 +177,7 @@ const CreateTask = () => {
                         <label htmlFor="start_date" className="block mb-2 text-sm font-medium">Start date</label>
                         <input 
                             type="date" 
-                            name="Start_date" 
+                            name="start_date" 
                             value={task.start_date} 
                             onChange={handleChange} 
                             className="block w-66 bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500"

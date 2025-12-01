@@ -112,7 +112,7 @@ const ProjectUpdate = () => {
                         <label htmlFor="start_date" className="block mb-2 text-sm font-medium">Start date</label>
                         <input 
                             type="date" 
-                            name="Start_date" 
+                            name="project_startDate" 
                             value={formData.project_startDate} 
                             onChange={handleChange} 
                             className="block w-66 bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500"
@@ -123,7 +123,7 @@ const ProjectUpdate = () => {
                         <label htmlFor="end_date" className="block mb-2 text-sm font-medium">Due date</label>
                         <input 
                             type="date" 
-                            name="end_date" 
+                            name="project_endDate" 
                             value={formData.project_endDate} 
                             onChange={handleChange} 
                             className="block w-66 bg-gray-50 border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500"

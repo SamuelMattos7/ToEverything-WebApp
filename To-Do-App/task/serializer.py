@@ -17,7 +17,7 @@ class TaskListSerializer(serializers.ModelSerializer):
 class TaskCalendarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = ['task_name', 'end_date']
+        fields = ['task_name', 'end_date'] 
 
 class TaskCreationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,6 +25,8 @@ class TaskCreationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class TaskDetailSerializer(serializers.ModelSerializer):
+
+    username = serializers.CharField(source='user.username', read_only=True)
     
     class Meta:
         model = Task
