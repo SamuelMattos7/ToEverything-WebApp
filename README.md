@@ -2,6 +2,21 @@
 
 A comprehensive todo application that helps you organize your tasks with projects, categories, and calendar integration. Built with modern web technologies and containerized for easy deployment.
 
+## Screenshots
+   
+   ### Home Page
+   ![Home page view](home.png)
+   
+   ### Task Page
+   ![Tasks view](tasks.png)
+
+   ### Categories Page
+   ![Categories](categories.png)
+
+   ### Projects Page
+   ![Projects](projects.png)
+
+
 ## Features
 
 ### Core Functionality
