@@ -84,7 +84,6 @@ function Nav() {
                             ):(
                                 <a className="py-4 px-2 text-white" href="/login">Login</a>
                             )}
-                            <a className="py-4 px-2 text-white" href="#">About</a>
                         </div>
                         
                     </div>

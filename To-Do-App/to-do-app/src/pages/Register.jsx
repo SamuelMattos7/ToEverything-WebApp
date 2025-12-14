@@ -35,6 +35,9 @@ function RegisterPage() {
             const response = await axios.post('http://127.0.0.1:8000/api/register/', formData)
             console.log("Sucess", response.data)
             setSucessMessage("Registration successful")
+            setTimeout(() => {
+                navigate("/login");
+            }, 2000);
         }
         catch(error){
             console.log("Error ocurred dunring registration", error.response?.data);
